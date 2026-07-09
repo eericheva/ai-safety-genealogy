@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# scratch
+raw/
+corpus/
+*.tmp
+*_dump.md
+.humanize_eval/
+
+# portable git snapshot (kept on disk, not committed)
+*.bundle
+
+# run logs (tmux/watchdog artifacts from collect_arxiv.py etc.)
+logs/
+
+# release: internal-only artifacts (kept on disk, not published)
+# process/working docs
+LOG.md
+PROGRESS.md
+LIFECYCLE.md
+VERIFICATION.md
+PLAN_ai_safety_genealogy.md
+POST_en_*
+# QA + run scaffolding
+verify_viz.py
+scripts/
+# pixel-diff QA snapshots
+viz/verify/
