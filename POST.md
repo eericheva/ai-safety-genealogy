@@ -14,13 +14,21 @@ Below is a table of 323 documented events, 129 actors and 18 directions. Its tim
 
 ## Main takeaways
 
-- **The field is not a straight line.** Laid out by year, money and scientific attention, it shows directions being born, some absorbed into the mainstream, others quietly fading, with money and attention drifting apart over time.
-- **The center of gravity migrated** from philosophy and lone institutes (2005-2016) to empirical technical safety and governance (2020s), concentrating around Anthropic and the national safety institutes.
-- **A direction can meet three fates, and going quiet is not the same as dying.** Interpretability, evaluations and AI control are rising; RLHF was absorbed into mainstream ML; agent foundations and early macrostrategy faded.
-- **The money regime changed around 2023.** One dominant philanthropist (Open Philanthropy) gave way to government money from half a dozen countries, plus about $268 million of venture equity into safety startups, kept as a separate, non-charitable view.
-- **2024-2026 is consolidation that is really proliferation.** A record year for new organisations, governance became the dominant storyline, and *Safety* quietly left the names: the UK AISI became the AI Security Institute, the US AISI became CAISI, and Open Philanthropy renamed to Coefficient Giving.
-- **Science and money are out of sync.** Interpretability's attention runs roughly 37 times ahead of what its funding would predict, while governance money ran ahead of its publications.
-- **Read the numbers as proxies, not bibliometrics.** arXiv counts are an attention proxy and event counts are collection density, not real-world activity; the causal *why* is interpretation layered on 323 verified events.
+Two kinds of findings came out of the data. Some just put numbers on what the field already half-knew. Others genuinely surprised me, so those come first.
+
+**Surprises:**
+
+- **Money and attention are systematically out of sync.** Interpretability's scientific attention runs about 37 times ahead of what its roughly $1 million in grants would predict, while governance money ran ahead of its publications. Funding and research almost never arrive together.
+- **Government money quietly overtook philanthropy around 2023.** Half a dozen national institutes (UK AISI, ARIA, Canada, Australia, NSF, EU) turned a one-donor field into an international, increasingly governmental one, and about $268 million of venture equity poured into safety startups, money that expects a return, not a grant.
+- **"Consolidation" is really proliferation.** Even as attention and money concentrate around a few names, 2024 became a record year for founding new organisations (24 of them), a wave of one-to-five-person specialist shops in interpretability, AI security and chain-of-thought monitoring.
+- **The word "Safety" is quietly leaving the field's names.** In 2025 the UK AI Safety Institute became the AI Security Institute, the US AI Safety Institute became CAISI, and Open Philanthropy, the donor that started it all, renamed itself Coefficient Giving.
+- **Going quiet is not the same as dying.** Reward modeling's last discrete event is 2017, yet it runs to 2025 under the RLHF banner. Directions usually get absorbed or slip into the background, they rarely just die.
+
+**Expected, now with numbers behind it:**
+
+- **The center of gravity moved from philosophy to empirical work.** Foundations-and-strategy events fall from 67% of the field in 2005-2013 to 6% by 2024-2026, while technical safety climbs to about 60%, concentrating around a handful of players, with Anthropic the single most-connected node.
+- **RLHF won and dissolved into mainstream ML.** Its arXiv proxy runs from 25 papers in 2021 to 1777 in 2025, precisely because it stopped being a safety topic and became standard practice.
+- **Governance exploded after ChatGPT.** Money on the governance subtrack rose from $0.4 million in 2018 to $18.4 million in 2023, roughly a 46-fold jump in five years.
 
 ---
 
