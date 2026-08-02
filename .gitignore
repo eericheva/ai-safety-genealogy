@@ -35,3 +35,4 @@ verify_viz.py
 scripts/
 # pixel-diff QA snapshots
 viz/verify/
+ai-safety-genealogy-mid2026/.srccache/
