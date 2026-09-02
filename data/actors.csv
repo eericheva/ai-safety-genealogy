@@ -1,0 +1,46 @@
+actor,type,first_seen,status,notes
+FHI,research,2005,closed_2024,"Oxford; macrostrategy; closed Apr 2024 - key pivot/closure event to capture"
+MIRI,research,2000,active,"agent foundations -> nondisclosure 2018 -> later comms/policy pivot"
+DeepMind,industry,2010,active,"safety team from ~2016"
+GCRI,research,2011,active,macrostrategy
+CSER,governance,2013,active,Cambridge
+FRI,research,2013,active,"later Center on Long-Term Risk?"
+FLI,governance,2014,active,"grants 2015 & 2018; policy wing"
+AI Impacts,research,2014,active,forecasting
+Bostrom,research,2014,person,"Superintelligence author"
+Open Philanthropy,funder,2015,active,"renamed program 'Navigating Transformative AI'; org now Coefficient Giving"
+OpenAI,research,2015,active,"superalignment 2023-24 dissolved; capped-profit 2019"
+CFI/Leverhulme,governance,2015,active,Cambridge
+CHAI,research,2016,active,"value learning; Russell"
+Partnership on AI,industry,2016,active,
+CFAR,training,2016,active,"pivot to AI safety 2016"
+Larks,meta,2016,person,"annual lit review 2016-2023 - key spine source"
+EA Funds,funder,2017,active,
+LTFF,funder,2017,active,"shift to individuals 2020"
+BERI,funder,2017,active,Critch
+GovAI,governance,2017,active,"ex-FHI Governance of AI Program"
+AI Safety Camp,training,2018,active,
+Alignment Forum,meta,2018,active,"discourse time-series source"
+Ought,research,2018,active,"scalable oversight; later Elicit"
+Stanford Center for AI Safety,research,2018,active,
+CSET,governance,2019,active,"Georgetown; Matheny; $55M founding"
+Convergence Analysis,research,2019,active,strategy
+AI Safety Support,training,2020,active,
+Median Group,research,2018,active,"ex-MIRI researchers"
+QUEUE_Anthropic,research,2021,queued,"founded 2021 - harvest next"
+QUEUE_Redwood,research,2021,queued,"AI control track"
+QUEUE_ARC/METR,research,2021,queued,"ARC Evals -> METR"
+QUEUE_Apollo,research,2023,queued,"evals/deception"
+QUEUE_CAIS,research,2022,queued,"Center for AI Safety, Hendrycks"
+QUEUE_FAR AI,research,2022,queued,
+QUEUE_Conjecture,research,2022,queued,"Leahy"
+QUEUE_MATS,training,2021,queued,"SERI MATS -> MATS"
+QUEUE_ARENA,training,2023,queued,
+QUEUE_BlueDot/AISF,training,2022,queued,"AI Safety Fundamentals"
+QUEUE_Constellation/Astra,training,2023,queued,
+QUEUE_PIBBSS,training,2022,queued,
+QUEUE_Timaeus,research,2023,queued,"singular learning theory"
+QUEUE_SFF,funder,2019,queued,"Survival and Flourishing Fund, Tallinn"
+QUEUE_FTX Future Fund,funder,2022,queued,"collapsed Nov 2022 - Wayback only"
+QUEUE_UK AISI,governance,2023,queued,
+QUEUE_US AISI,governance,2023,queued,
