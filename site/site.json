@@ -1,0 +1,33 @@
+{
+  "title": "AI Safety Field Genealogy",
+  "desc": "An interactive genealogy map of AI safety research.",
+  "entry": "index.html",
+  "preview": "site/preview.png",
+  "files": {
+    "index.html": "site/index.html",
+    "alluvial_by_era.html": "viz/alluvial_by_era.html",
+    "alluvial_grouped.html": "viz/alluvial_grouped.html",
+    "alluvial_org.html": "viz/alluvial_org.html",
+    "alluvial_org_preview.html": "viz/alluvial_org_preview.html",
+    "alluvial_pairs.html": "viz/alluvial_pairs.html",
+    "births_deaths.html": "viz/births_deaths.html",
+    "cumulative_funding.html": "viz/cumulative_funding.html",
+    "era_shift.html": "viz/era_shift.html",
+    "event_composition.html": "viz/event_composition.html",
+    "funding_absolute.html": "viz/funding_absolute.html",
+    "funding_dotstrip.html": "viz/funding_dotstrip.html",
+    "funding_ranked.html": "viz/funding_ranked.html",
+    "funding_sankey.html": "viz/funding_sankey.html",
+    "funding_sankey_era.html": "viz/funding_sankey_era.html",
+    "money_attention_dumbbell.html": "viz/money_attention_dumbbell.html",
+    "money_vs_attention.html": "viz/money_vs_attention.html",
+    "money_vs_attention_tracks.html": "viz/money_vs_attention_tracks.html",
+    "org_lifespan.html": "viz/org_lifespan.html",
+    "pledges_budgets.html": "viz/pledges_budgets.html",
+    "pledges_ftx.html": "viz/pledges_ftx.html",
+    "timeline.html": "viz/timeline.html",
+    "track_emergence.html": "viz/track_emergence.html",
+    "track_lifespan.html": "viz/track_lifespan.html",
+    "track_radar.html": "viz/track_radar.html"
+  }
+}
