@@ -1,0 +1,9 @@
+{
+  "title": "AI Safety Genealogy: Mid-2026",
+  "desc": "53 research directions, ranked by two demand metrics: money and citations.",
+  "entry": "index.html",
+  "preview": "ai-safety-genealogy-mid2026/site/preview.png",
+  "files": {
+    "index.html": "ai-safety-genealogy-mid2026/dashboard.html"
+  }
+}
