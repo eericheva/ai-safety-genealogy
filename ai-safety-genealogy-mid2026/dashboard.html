@@ -4,68 +4,64 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Safety Genealogy: Mid-2026 - demand metrics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap">
 <style>
+  /* CHANGED 2026-11-11: the Mrs Wallbreaker site brand, dark only; this project's accent is green #7ad13a.
+     --s-blue keeps its name as the single-series / chrome accent; --d-blue is the blue that one
+     category of a multi-colour legend has always been, so those legends keep their colours. */
   .viz{
-    color-scheme: light;
-    --surface-1:#fcfcfb; --plane:#f9f9f7;
-    --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#6b6a66;
-    --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
-    --s-blue:#2470cc; --s-blue-soft:#9ec5f4;
+    color-scheme: dark;
+    --surface-1:#171513; --plane:#0c0b0a; --panel:#11100e;
+    --text-primary:#efeae2; --text-secondary:#cfc8bd; --muted:#9a948b;
+    --grid:#26231f; --axis:#4a4540; --border:#2e2b28;
+    --s-blue:#7ad13a; --s-blue-soft:#3d6a1d; --d-blue:#3987e5;
     --good:#0ca30c; --warn:#fab219; --cool:#5598e7;
-    /* Lightness of a tag colour (--tl) on the oklch scale, and the ink that sits on such a fill.
-       Trend fills are light in both themes, so their text is always dark. */
-    --tl:0.43; --tl-fg:#fff; --on-fill:#0d0d0d;
+    /* Lightness of a tag colour (--tl) on the oklch scale, and the ink that sits on such a fill. */
+    --tl:0.79; --tl-fg:#0d0d0d; --on-fill:#0d0d0d;
+    --font-display:'Unbounded', sans-serif; --font-text:'Onest', sans-serif; --font-mono:'JetBrains Mono', monospace;
   }
-  /* The dark palette is declared for the screen only: print keeps the base light rules,
-     so the sheet does not depend on whether the reader enabled background graphics. */
-  @media screen{
-    :root[data-theme="dark"] .viz{
-      color-scheme: dark;
-      --surface-1:#1a1a19; --plane:#0d0d0d;
-      --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
-      --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
-      --s-blue:#3987e5; --s-blue-soft:#1c5cab;
-      --tl:0.79; --tl-fg:#0d0d0d;
-    }
-  }
-  @media screen and (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]) .viz{
-      color-scheme: dark;
-      --surface-1:#1a1a19; --plane:#0d0d0d;
-      --text-primary:#ffffff; --text-secondary:#c3c2b7; --muted:#898781;
-      --grid:#2c2c2a; --axis:#383835; --border:rgba(255,255,255,0.10);
-      --s-blue:#3987e5; --s-blue-soft:#1c5cab;
-      --tl:0.79; --tl-fg:#0d0d0d;
+  /* Paper keeps the light palette, so the sheet does not depend on whether the reader enabled background graphics. */
+  @media print{
+    .viz{
+      color-scheme: light;
+      --surface-1:#fcfcfb; --plane:#f9f9f7;
+      --text-primary:#0b0b0b; --text-secondary:#52514e; --muted:#6b6a66;
+      --grid:#e1e0d9; --axis:#c3c2b7; --border:rgba(11,11,11,0.10);
+      --s-blue:#2470cc; --s-blue-soft:#9ec5f4; --d-blue:#2470cc;
+      --tl:0.43; --tl-fg:#fff;
     }
   }
   *{box-sizing:border-box}
   html,body{margin:0}
-  html{background:#f9f9f7}
-  @media screen{ :root[data-theme="dark"]{background:#0d0d0d} }
-  @media screen and (prefers-color-scheme: dark){ :root:not([data-theme="light"]){background:#0d0d0d} }
-  .viz{background:var(--plane); color:var(--text-primary);
-    font-family:system-ui,-apple-system,"Segoe UI",sans-serif; padding:24px; min-height:100vh;}
+  html{background:#0c0b0a}
+  @media print{ html{background:#f9f9f7} }
+  .viz{background:var(--plane); color:var(--text-primary); border-top:4px solid var(--s-blue);
+    font-family:var(--font-text); padding:24px; min-height:100vh;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--s-blue); outline-offset:2px;}
   .wrap{max-width:1180px; margin:0 auto;}
   @media (max-width:820px){
     .viz{padding:12px}
     .card svg, .panel svg{min-width:760px}
     .card:has(svg), .panel:has(svg){overflow-x:auto}
   }
-  h1{font-size:22px; margin:0 0 2px;}
+  h1{font:700 24px/1.2 var(--font-display); letter-spacing:-.01em; margin:0 0 8px;}
   .sub{color:var(--text-secondary); font-size:13px; margin:0 0 18px; max-width:820px; line-height:1.5;}
   .topbar{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap;}
-  .btns{display:flex; gap:8px; flex:none;}
+  /* CHANGED 2026-11-11: the site has one theme, so the theme switch is not shown */
+  .btns{display:none;}
   .toggle{border:1px solid var(--border); background:var(--surface-1); color:var(--text-secondary);
-    border-radius:8px; padding:6px 12px; font-size:12px; cursor:pointer; font-family:inherit; white-space:nowrap;}
+    border-radius:0; padding:6px 12px; font:700 12px var(--font-mono); text-transform:uppercase; letter-spacing:.1em; cursor:pointer; white-space:nowrap;}
   .toggle:hover{border-color:var(--s-blue); color:var(--text-primary);}
   .tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:8px 0 22px;}
-  .tile{background:var(--surface-1); border:1px solid var(--border); border-radius:12px; padding:14px 16px;}
-  .tile .n{font-size:26px; font-weight:650; line-height:1.1;}
-  .tile .l{font-size:12px; color:var(--text-secondary); margin-top:3px;}
-  .card{background:var(--surface-1); border:1px solid var(--border); border-radius:14px; padding:18px 18px 14px; margin-bottom:20px;}
-  .card h2{font-size:15px; margin:0 0 2px;}
+  .tile{background:var(--surface-1); border:1px solid var(--border); border-radius:0; padding:14px 16px;}
+  .tile .n{font:700 26px/1.1 var(--font-display); letter-spacing:-.01em;}
+  .tile .l{font-size:12px; color:var(--text-secondary); margin-top:6px;}
+  .card{background:var(--panel); border:1px solid var(--grid); border-radius:0; padding:18px 18px 14px; margin-bottom:20px;}
+  .card h2{font:700 16px/1.3 var(--font-display); letter-spacing:-.01em; margin:0 0 6px;}
   .card p.note{font-size:12px; color:var(--text-secondary); margin:0 0 12px; line-height:1.5;}
-  .sect{font-size:11.5px; color:var(--muted); font-weight:600; margin:14px 0 5px; letter-spacing:.02em;}
+  .sect{font:700 11px var(--font-mono); text-transform:uppercase; color:var(--s-blue); margin:14px 0 7px; letter-spacing:.14em;}
   .legend{display:flex; gap:14px; flex-wrap:wrap; font-size:12px; color:var(--text-secondary); margin:6px 0 4px;}
   .legend span{display:inline-flex; align-items:center; gap:6px; white-space:nowrap;}
   #m3led table td, #m3sched table td, #m3skip3 table td{vertical-align:top;}
@@ -79,26 +75,27 @@
   .dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
   svg{display:block; width:100%; height:auto; overflow:visible;}
   text{font-family:inherit;}
-  .axlab{fill:var(--muted); font-size:11px;}
+  .axlab{fill:var(--muted); font-size:11px; font-family:var(--font-mono);}
   .axtitle{fill:var(--text-secondary); font-size:12px; font-weight:550;}
   table{width:100%; border-collapse:collapse; font-size:12.5px;}
   th,td{text-align:left; padding:7px 8px; border-bottom:1px solid var(--grid);}
   th{color:var(--text-secondary); font-weight:600; font-size:11.5px; cursor:pointer; user-select:none; white-space:nowrap;}
   th.num,td.num{text-align:right; font-variant-numeric:tabular-nums;}
+  td.num{font-family:var(--font-mono); font-size:12px;}
   td.name{max-width:230px;}
   tr.grp td{background:var(--plane); font-weight:650; font-size:12px; padding:9px 8px 7px;}
   tr.grp .gd{width:9px; height:9px; border-radius:50%; display:inline-block; margin-right:7px; vertical-align:-1px;}
   tr.grp .gc{color:var(--muted); font-weight:500; margin-left:7px;}
-  .badge{display:inline-block; padding:2px 8px; border-radius:999px; font-size:11px; font-weight:600; white-space:nowrap;}
+  .badge{display:inline-block; padding:2px 8px; border-radius:0; font-size:11px; font-weight:600; white-space:nowrap;}
   .spark{display:inline-flex; align-items:flex-end; gap:3px; height:22px;}
-  .spark i{width:7px; background:var(--s-blue-soft); border-radius:2px 2px 0 0; display:inline-block;}
+  .spark i{width:7px; background:var(--s-blue-soft); border-radius:0; display:inline-block;}
   .spark i.last{background:var(--s-blue);}
   .trklab{fill:var(--text-secondary); font-size:11px;}
-  .mlab{fill:var(--s-blue); font-size:10.5px; font-variant-numeric:tabular-nums;}
+  .mlab{fill:var(--s-blue); font-size:10.5px; font-family:var(--font-mono); font-variant-numeric:tabular-nums;}
   .bandhead{fill:var(--text-primary); font-size:11.5px; font-weight:650;}
   .card h2{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
   .tbtn{margin-left:auto; border:1px solid var(--border); background:transparent; color:var(--text-secondary);
-    border-radius:8px; padding:3px 10px; font-size:11.5px; cursor:pointer; font-family:inherit; font-weight:500;
+    border-radius:0; padding:4px 10px; font:700 11px var(--font-mono); text-transform:uppercase; letter-spacing:.1em; cursor:pointer;
     white-space:nowrap; flex:none;}
   .tbtn:hover{border-color:var(--s-blue); color:var(--text-primary);}
   .backbar{display:flex; align-items:center; gap:12px; margin:0 0 14px;}
@@ -109,11 +106,11 @@
   @media print{ body[data-view] .card{display:block;} .tbtn,.backbar{display:none;} }
   .chips{display:flex; flex-wrap:wrap; gap:7px;}
   .chip{border:1px solid var(--border); background:transparent; color:var(--text-secondary);
-    border-radius:999px; padding:4px 11px; font-size:12px; cursor:pointer; font-family:inherit;
+    border-radius:0; padding:4px 11px; font-size:12px; cursor:pointer; font-family:inherit;
     display:inline-flex; align-items:center; gap:6px; transition:background .1s,color .1s,border-color .1s;}
   .chip:hover{border-color:var(--c);}
   .chip i.cd{width:8px; height:8px; border-radius:50%; background:var(--c); flex:none;}
-  .chip b{font-weight:600; font-variant-numeric:tabular-nums; opacity:.65;}
+  .chip b{font:600 11px var(--font-mono); opacity:.65;}
   .chip.on{background:var(--c); border-color:var(--c); color:var(--tl-fg);}
   .chip.on i.cd{background:var(--tl-fg);}
   .chip.on b{opacity:.8;}
@@ -121,7 +118,7 @@
   .chip.reset{border-style:dashed; --c:var(--muted);}
   td.tags{max-width:250px;}
   .tg{display:inline-block; font-size:10.5px; color:var(--c); background:var(--cb);
-    border:1px solid transparent; border-radius:999px; padding:1px 7px; margin:1px 3px 1px 0; cursor:pointer; white-space:nowrap;}
+    border:1px solid transparent; border-radius:0; padding:1px 7px; margin:1px 3px 1px 0; cursor:pointer; white-space:nowrap;}
   .tg.on{background:var(--c); color:var(--tl-fg);}
   .tglab{font-size:11px;}
   .fund{cursor:help; border-bottom:1px dotted var(--axis); color:var(--s-blue);
@@ -137,13 +134,13 @@
   .tkgrp .gd{width:9px; height:9px; border-radius:50%; display:inline-block; flex:none;}
   .tkgrp .gc{color:var(--muted); font-weight:500;}
   .xb{margin-left:auto; border:1px solid var(--border); background:transparent; color:var(--muted);
-    border-radius:7px; padding:2px 9px; font-size:11px; cursor:pointer; font-family:inherit;}
+    border-radius:0; padding:2px 9px; font:700 10.5px var(--font-mono); text-transform:uppercase; letter-spacing:.08em; cursor:pointer;}
   .xb:hover{border-color:var(--s-blue); color:var(--text-primary);}
-  .qs{border:1px solid var(--border); border-radius:12px; padding:10px 14px; margin:0 0 12px; background:var(--plane);}
+  .qs{border:1px solid var(--border); border-radius:0; padding:10px 14px; margin:0 0 12px; background:var(--plane);}
   .qs summary{font-size:12px; font-weight:650; cursor:pointer; color:var(--text-secondary);}
   .qs summary:hover{color:var(--s-blue);}
   .qs .lead{font-size:12.5px; margin:10px 0 0; line-height:1.5;}
-  .qs h5{font-size:11.5px; color:var(--s-blue); font-weight:650; margin:13px 0 3px;}
+  .qs h5{font:700 11px var(--font-mono); text-transform:uppercase; letter-spacing:.14em; color:var(--s-blue); margin:14px 0 4px;}
   .qs p{font-size:12px; color:var(--text-secondary); line-height:1.55; margin:0;}
   .qs ul{margin:3px 0 0; padding-left:18px;}
   .qs li{font-size:12px; color:var(--text-secondary); line-height:1.5; margin-bottom:3px;}
@@ -156,13 +153,13 @@
   .qs p.srcs a:hover{color:var(--text-primary);}
   .qs .mny{font-size:12px; color:var(--text-secondary); line-height:1.55; margin:0;}
   .tkl{display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:12px;}
-  .tk{border:1px solid var(--border); border-radius:12px; padding:12px 13px; background:var(--plane);}
+  .tk{border:1px solid var(--border); border-radius:0; padding:12px 13px; background:var(--plane);}
   .tk h4{font-size:13px; font-weight:650; line-height:1.35; margin:0 0 6px;}
   .tk h4 a{color:var(--text-primary); text-decoration:none; border-bottom:1px solid var(--s-blue-soft);}
   .tk h4 a:hover{color:var(--s-blue);}
   .tk p{font-size:12px; color:var(--text-secondary); line-height:1.5; margin:0 0 10px;}
   .tk dl{display:grid; grid-template-columns:auto 1fr; gap:4px 10px; margin:0; font-size:11.5px;}
-  .tk dt{color:var(--muted); white-space:nowrap;}
+  .tk dt{color:var(--muted); white-space:nowrap; font-family:var(--font-mono); font-size:11px;}
   .tk dd{margin:0;}
   .tk dd.no{color:var(--muted);}
   .tk .tg{cursor:default;}
@@ -174,8 +171,8 @@
 .dl.on{color:var(--s-blue); font-weight:650;}
 .tip .op{color:var(--s-blue);}
 .tip{position:fixed; line-height:1.45; pointer-events:none; background:var(--surface-1); border:1px solid var(--border);
-    border-radius:9px; padding:9px 11px; font-size:12px; color:var(--text-primary);
-    box-shadow:0 6px 20px rgba(0,0,0,.16); opacity:0; transition:opacity .08s; z-index:50;
+    border-radius:0; padding:9px 11px; font-size:12px; color:var(--text-primary);
+    box-shadow:0 6px 20px rgba(0,0,0,.5); opacity:0; transition:opacity .08s; z-index:50;
     max-width:min(290px, calc(100vw - 24px));}
   .tip b{font-weight:650;} .tip .k{color:var(--text-secondary);}
   /* The fourth tile holds a direction's name, not a number: on a narrow screen the large type breaks it over three lines. */
@@ -816,7 +813,7 @@ let trkWhat='money', trkGroup='dir', trkScale='row', trkLay='lines';
 const PRICE_YEARS=[2024,2025,2026];
 const immature=(y,w)=>w==='cite'?y>=2025:y>=2026;
 const CDW=1010, CDL=250, CDR=170;
-const cdSC={L:'var(--good)', M:'var(--s-blue)', U:'var(--warn)'};
+const cdSC={L:'var(--good)', M:'var(--d-blue)', U:'var(--warn)'};
 const cdFmtM=v=>!v?'$0':(v>=1e3?'$'+(v/1e3).toFixed(1)+'B':'$'+v.toFixed(v<10?2:0)+'M');
 const cdFmtC=v=>v==null?'-':(v>=1e6?'$'+(v/1e6).toFixed(1)+'M':v>=1e3?'$'+Math.round(v/1e3)+'k':'$'+Math.round(v));
 const cdKey=()=>cdWhat==='money'?cdUnit:cdUnit+(cdWhat==='paper'?'Paper':'Cite');
@@ -1237,7 +1234,7 @@ function drawM2(){
     const hgt=v=>(base-top)*v/mx;
     svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
     svg.appendChild(el('line',{x1:L2,y1:base,x2:W-R2,y2:base,stroke:'var(--axis)','stroke-width':1}));
-    const KEYS=[['paid','var(--good)',t.m2Paid],['awarded_additional','var(--s-blue)',t.m2Awarded],
+    const KEYS=[['paid','var(--good)',t.m2Paid],['awarded_additional','var(--d-blue)',t.m2Awarded],
                 ['promised','var(--warn)',t.m2Promised]];
     years.forEach((y,i)=>{
       const e=el('text',{x:X(i,1),y:base+16,'text-anchor':'middle',class:'axlab'});e.textContent=y;svg.appendChild(e);
@@ -1311,7 +1308,7 @@ function drawM2(){
     svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
     svg.appendChild(el('line',{x1:L2,y1:base,x2:W-R2,y2:base,stroke:'var(--axis)','stroke-width':1}));
     years.forEach(y=>{const e=el('text',{x:X(y),y:base+16,'text-anchor':'middle',class:'axlab'});e.textContent=y;svg.appendChild(e);});
-    const COLS=['var(--s-blue)','var(--warn)','var(--good)'];
+    const COLS=['var(--d-blue)','var(--warn)','var(--good)'];
     labs.forEach((l,i)=>{const c=COLS[i%3], pts=years.filter(y=>M.labs[l][y]).map(y=>[X(y),Y(M.labs[l][y]),y]);
       svg.appendChild(el('polyline',{points:pts.map(p=>p[0]+','+p[1]).join(' '),fill:'none',stroke:c,'stroke-width':2}));
       pts.forEach(p=>{const cr=el('circle',{cx:p[0],cy:p[1],r:3.6,fill:c});
@@ -1383,7 +1380,7 @@ function drawM2(){
 
   // 5. the floors in other currencies - three bars per direction, never added together
   (()=>{const svg=document.getElementById('m2gov'); svg.textContent='';
-    const CUR=[['EUR','var(--s-blue)'],['GBP','var(--good)'],['USD','var(--warn)']];
+    const CUR=[['EUR','var(--d-blue)'],['GBP','var(--good)'],['USD','var(--warn)']];
     const D2=Object.entries(M.govFloors).map(([d,v])=>({d,v,
       tot:v.EUR+v.GBP+v.USD})).sort((a,b)=>b.tot-a.tot);
     const rowH=26, top=30, L2=250, R2=210, H=top+D2.length*rowH+14;
@@ -1843,7 +1840,7 @@ function drawCost(){
   svg.textContent=''; svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
   svg.setAttribute('aria-label',t.hCost);
   const ROWS=[
-    {lo:'moneyLo',hi:'moneyHi',at:'moneyAt',lab:t.cRowMoney,col:'var(--s-blue)',bar:1,fmt:v=>cnum(v,v>=1e8?0:1)},
+    {lo:'moneyLo',hi:'moneyHi',at:'moneyAt',lab:t.cRowMoney,col:'var(--d-blue)',bar:1,fmt:v=>cnum(v,v>=1e8?0:1)},
     {at:'papers',lab:t.cRowPapers,col:'var(--warn)',bar:1,fmt:cint},
     {lo:'paperLo',hi:'paperHi',at:'paperAt',lab:t.cRowPPaper,col:'var(--good)',fmt:v=>cnum(v)},
     {lo:'citeLo',hi:'citeHi',at:'citeAt',lab:t.cRowPCite,col:COSTV,fmt:v=>cnum(v),hollow:1},
