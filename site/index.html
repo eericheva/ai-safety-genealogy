@@ -2,32 +2,49 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI-safety genealogy — visual dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Onest:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap">
 <style>
-  body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; color: #e6e9f0; background: #0f1117; }
-  header { background: #171a23; border-bottom: 1px solid #2a2f3c; padding: 28px 40px; }
-  header h1 { margin: 0 0 6px; font-size: 26px; }
-  header .stat { color: #93a0b5; font-size: 14px; }
-  header .nav { margin-top: 10px; font-size: 13px; }
-  a { color: #5b8def; text-decoration: none; }
+  /* Mrs Wallbreaker site brand, dark only; AI Safety Field Genealogy accent #ff4fa3 */
+  :root { color-scheme: dark; --bg: #0c0b0a; --panel: #11100e; --card: #171513; --line: #2e2b28; --divider: #26231f;
+    --text: #efeae2; --text-2: #cfc8bd; --muted: #9a948b; --faint: #7d776f; --accent: #ff4fa3;
+    --font-display: 'Unbounded', sans-serif; --font-text: 'Onest', sans-serif; --font-mono: 'JetBrains Mono', monospace; }
+  body { font-family: var(--font-text); margin: 0; color: var(--text); background: var(--bg); }
+  header { background: var(--panel); border-top: 4px solid var(--accent); border-bottom: 1px solid var(--divider); padding: 28px 40px; }
+  header h1 { margin: 0 0 10px; font: 700 26px/1.2 var(--font-display); letter-spacing: -.01em; }
+  header .stat { color: var(--muted); font: 400 13px/1.5 var(--font-mono); }
+  header .nav { margin-top: 12px; font: 700 12px var(--font-mono); text-transform: uppercase; letter-spacing: .14em; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   main { max-width: 1560px; margin: 0 auto; padding: 24px 20px 80px; }
   .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 8px 0 32px; }
-  .card { background: #171a23; border: 1px solid #2a2f3c; border-radius: 10px; padding: 16px 18px; }
-  .card h3 { margin: 0 0 8px; font-size: 15px; }
-  .card.findings { border-left: 4px solid #5b8def; grid-column: 1; grid-row: 1 / span 2; }
-  .card.caveats { border-left: 4px solid #e5736f; grid-column: 2; grid-row: 1; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 0; padding: 16px 18px; }
+  .card h3 { margin: 0 0 8px; font: 700 12px var(--font-mono); text-transform: uppercase; letter-spacing: .14em; color: var(--accent); }
+  .card.findings { border-left: 4px solid var(--accent); grid-column: 1; grid-row: 1 / span 2; }
+  .card.caveats { border-left: 4px solid #ff6b5e; grid-column: 2; grid-row: 1; }
+  .card.caveats h3 { color: #ff6b5e; }
   .card.debts { border-left: 4px solid #F58518; grid-column: 2; grid-row: 2; }
-  ul { margin: 6px 0 0; padding-left: 20px; font-size: 13px; line-height: 1.5; color: #93a0b5; }
-  section { background: #171a23; border: 1px solid #2a2f3c; border-radius: 10px; margin: 0 0 26px; padding: 18px 20px; }
-  section h2 { margin: 0 0 4px; font-size: 19px; }
-  .group { margin: 34px 0 12px; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: #7f8ba0; border-bottom: 1px solid #2a2f3c; padding-bottom: 6px; }
+  .card.debts h3 { color: #F58518; }
+  ul { margin: 6px 0 0; padding-left: 20px; font-size: 14px; line-height: 1.55; color: var(--text-2); }
+  section { background: var(--panel); border: 1px solid var(--divider); border-radius: 0; margin: 0 0 26px; padding: 18px 20px; }
+  section h2 { margin: 0 0 8px; font: 700 19px/1.25 var(--font-display); letter-spacing: -.01em; }
+  .group { margin: 40px 0 14px; font: 700 12px var(--font-mono); text-transform: uppercase; letter-spacing: .14em; color: var(--accent); border-bottom: 1px solid var(--divider); padding-bottom: 8px; }
   .group:first-of-type { margin-top: 10px; }
-  .note { color: #e6e9f0; font-size: 14px; line-height: 1.5; margin: 0 0 10px; border-left: 2px solid #5b8def; padding-left: 10px; }
-  .desc { color: #93a0b5; font-size: 13px; margin: 0 0 12px; }
-  .guide { margin: 0 0 12px; font-size: 13px; line-height: 1.55; color: #b7c0d0; }
+  .note { color: var(--text); font-size: 15px; line-height: 1.5; margin: 0 0 10px; border-left: 2px solid var(--accent); padding-left: 10px; }
+  .desc { color: var(--muted); font-size: 14px; line-height: 1.5; margin: 0 0 12px; }
+  .guide { margin: 0 0 12px; font-size: 14px; line-height: 1.55; color: var(--text-2); }
   .guide p { margin: 5px 0; }
-  .guide b { color: #e6e9f0; }
-  iframe { width: 100%; height: 720px; border: 0; border-radius: 6px; background: #0f1117; }
-  .open a { font-size: 13px; }
+  .guide b { color: var(--text); }
+  iframe { width: 100%; height: 720px; border: 0; border-radius: 0; background: var(--bg); }
+  .open a { font: 700 12px var(--font-mono); text-transform: uppercase; letter-spacing: .1em; }
+  @media (max-width: 720px) {
+    header { padding: 20px 16px; }
+    header h1 { font-size: 20px; }
+    main { padding: 16px 16px 60px; }
+    .cards { grid-template-columns: 1fr; }
+    .card.findings, .card.caveats, .card.debts { grid-column: auto; grid-row: auto; }
+    section { padding: 14px 12px; }
+  }
 </style></head>
 <body>
 <header>
