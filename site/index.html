@@ -21,10 +21,11 @@
   .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 8px 0 32px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 0; padding: 16px 18px; }
   .card h3 { margin: 0 0 8px; font: 700 12px var(--font-mono); text-transform: uppercase; letter-spacing: .14em; color: var(--accent); }
-  .card.findings { border-left: 4px solid var(--accent); grid-column: 1; grid-row: 1 / span 2; }
-  .card.caveats { border-left: 4px solid #ff6b5e; grid-column: 2; grid-row: 1; }
+  /* CHANGED 2026-11-22: brand book: a card carries a 4px coloured top edge (owner) */
+  .card.findings { border-top: 4px solid var(--accent); grid-column: 1; grid-row: 1 / span 2; }
+  .card.caveats { border-top: 4px solid #ff6b5e; grid-column: 2; grid-row: 1; }
   .card.caveats h3 { color: #ff6b5e; }
-  .card.debts { border-left: 4px solid #F58518; grid-column: 2; grid-row: 2; }
+  .card.debts { border-top: 4px solid #F58518; grid-column: 2; grid-row: 2; }
   .card.debts h3 { color: #F58518; }
   ul { margin: 6px 0 0; padding-left: 20px; font-size: 14px; line-height: 1.55; color: var(--text-2); }
   section { background: var(--panel); border: 1px solid var(--divider); border-radius: 0; margin: 0 0 26px; padding: 18px 20px; }
