@@ -10,7 +10,8 @@
     --font-display: 'Unbounded', sans-serif; --font-text: 'Onest', sans-serif; --font-mono: 'JetBrains Mono', monospace; }
   body { font-family: var(--font-text); margin: 0; color: var(--text); background: var(--bg); }
   header { background: var(--panel); border-top: 4px solid var(--accent); border-bottom: 1px solid var(--divider); padding: 28px 40px; }
-  header h1 { margin: 0 0 10px; font: 700 26px/1.2 var(--font-display); letter-spacing: -.01em; }
+  /* CHANGED 2026-11-22: page title 32px Unbounded 700 (brand book sizes); the project-opening 48px 900 would break this 50-character title over two lines at 1440px */
+  header h1 { margin: 0 0 10px; font: 700 32px/1.2 var(--font-display); letter-spacing: -.01em; }
   header .stat { color: var(--muted); font: 400 13px/1.5 var(--font-mono); }
   header .nav { margin-top: 12px; font: 700 12px var(--font-mono); text-transform: uppercase; letter-spacing: .14em; }
   a { color: var(--accent); text-decoration: none; }
