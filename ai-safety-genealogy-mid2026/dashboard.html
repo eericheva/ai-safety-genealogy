@@ -44,6 +44,7 @@
   @media (max-width:820px){
     .viz{padding:12px}
     .card svg, .panel svg{min-width:760px}
+    .legend svg{min-width:0} /* ADDED 2026-11-22: the 46px legend marks are not charts; stretched to 760px they pushed every label of the second legend row out of view on a narrow screen */
     .card:has(svg), .panel:has(svg){overflow-x:auto}
   }
   /* CHANGED 2026-11-22: page title 32px Unbounded 700 (brand book sizes) */
@@ -66,6 +67,7 @@
   .sect{font:700 11px var(--font-mono); text-transform:uppercase; color:var(--s-blue); margin:14px 0 7px; letter-spacing:.14em;}
   .legend{display:flex; gap:14px; flex-wrap:wrap; font-size:12px; color:var(--text-secondary); margin:6px 0 4px;}
   .legend span{display:inline-flex; align-items:center; gap:6px; white-space:nowrap;}
+  .legend span.long{white-space:normal; flex:1 1 100%; min-width:0;} /* ADDED 2026-11-22: see legend() */
   #m3led table td, #m3sched table td, #m3skip3 table td{vertical-align:top;}
   .lw{display:block; line-height:1.5; margin-bottom:5px;}
   .lw i{display:block; font-style:normal; color:var(--muted); margin-left:14px;}
@@ -541,7 +543,8 @@ const tipHtml=r=>{const t=T();return `<b>${r.name}</b><br><span class="k">${t.kY
   +`<br><span class="op">${TCNT[r.id]} ${t.tkN}. ${SELD.has(r.id)?t.tipClose:t.tipOpen}</span>`;};
 
 function legend(id){
-  const g=(sv,lab)=>`<span><svg width="46" height="14" style="width:46px;height:14px;flex:none">${sv}</svg>${lab}</span>`;
+  // CHANGED 2026-11-22: a label may take its own row and wrap inside the card (cls 'long'): the money label ran 130px past the card and made the page 1570px wide at 1440
+  const g=(sv,lab,cls)=>`<span${cls?` class="${cls}"`:''}><svg width="46" height="14" style="width:46px;height:14px;flex:none">${sv}</svg>${lab}</span>`;
   const mu='var(--muted)', t=T();
   document.getElementById(id).innerHTML=
     '<div class="legend">'+Object.values(trendColors).map(c=>
@@ -551,7 +554,7 @@ function legend(id){
     +g(`<circle cx="8" cy="7" r="3.6" fill="${mu}"/><circle cx="34" cy="7" r="7" fill="${mu}"/>`,t.legSize)
     +g(`<line x1="2" y1="7" x2="26" y2="7" stroke="${mu}" stroke-width="1.3" stroke-dasharray="2 2"/><circle cx="32" cy="7" r="3.6" fill="var(--surface-1)" stroke="${mu}" stroke-width="1.4"/>`,t.legHollow)
     +g(`<line x1="2" y1="7" x2="44" y2="7" stroke="${mu}" stroke-width="2" stroke-opacity=".45" stroke-dasharray="5 3"/>`,t.legDash)
-    +g(`<line x1="2" y1="7" x2="44" y2="7" stroke="${mu}" stroke-width="1" stroke-opacity=".25"/><rect x="8" y="3.5" width="26" height="7" rx="3.5" fill="${mu}" fill-opacity=".26" stroke="${mu}" stroke-opacity=".55"/><line x1="18" y1="1.5" x2="18" y2="12.5" stroke="${mu}" stroke-width="2"/>`,t.legMoney)
+    +g(`<line x1="2" y1="7" x2="44" y2="7" stroke="${mu}" stroke-width="1" stroke-opacity=".25"/><rect x="8" y="3.5" width="26" height="7" rx="3.5" fill="${mu}" fill-opacity=".26" stroke="${mu}" stroke-opacity=".55"/><line x1="18" y1="1.5" x2="18" y2="12.5" stroke="${mu}" stroke-width="2"/>`,t.legMoney,'long')
     +'</div>';
 }
 
