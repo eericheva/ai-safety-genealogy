@@ -28,6 +28,7 @@
     "timeline.html": "viz/timeline.html",
     "track_emergence.html": "viz/track_emergence.html",
     "track_lifespan.html": "viz/track_lifespan.html",
-    "track_radar.html": "viz/track_radar.html"
+    "track_radar.html": "viz/track_radar.html",
+    "plotly-genealogy-3.6.0.min.js": "viz/plotly-genealogy-3.6.0.min.js"
   }
 }
